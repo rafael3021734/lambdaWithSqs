@@ -1,0 +1,17 @@
+import json
+
+def lambda_handler(event, context):
+    # TODO implement
+    print(event)
+    
+    for record in event.get('Records'):
+        print(event)
+        body = json.loads(record.get('body'))
+        id_person = body.get('id')
+        name = body.get('name')
+        print(f'Name: {name}, ID:{id_person}')
+        print(f'teste:{body}')
+    return {
+        'statusCode': 200,
+        #'body': json.dumps('Hello from Lambda!')
+    }
