@@ -2,9 +2,10 @@
 import boto3
 
 sqs = boto3.resource('sqs')
-
+queue = sqs.Queue(url='http://192.168.99.100:4566/000000000000/localstack')
+print(queue)
 # Get the queue
-queue = sqs.get_queue_by_name(QueueName='test')
+#queue = sqs.get_queue_by_name(QueueName='localstack')
 
 
 
@@ -18,6 +19,7 @@ response = queue.send_message(MessageBody='boto3', MessageAttributes={
         'DataType': 'String'
     }
 })
+print(queue)
 
 # The response is NOT a resource, but gives you a message ID and MD5
 print(response.get('MessageId'))
